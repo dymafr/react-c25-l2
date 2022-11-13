@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { recipesState } from 'state';
+import { recipesState } from '../state';
 import { getRecipes } from '../apis';
 
 export function useFetchRecipes(page) {

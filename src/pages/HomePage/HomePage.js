@@ -6,6 +6,7 @@ import Search from './components/Search/Search';
 import { useFetchRecipes } from '../../hooks';
 import { updateRecipe as updateR, deleteRecipe as deleteR } from '../../apis';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { selectFilteredRecipes, recipesState } from '../../state';
 
 export default function HomePage() {
   const [filter, setFilter] = useState('');
