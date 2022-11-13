@@ -5,11 +5,14 @@ import Loading from '../../components/Loading/Loading';
 import Search from './components/Search/Search';
 import { useFetchRecipes } from '../../hooks';
 import { updateRecipe as updateR, deleteRecipe as deleteR } from '../../apis';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 export default function HomePage() {
   const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
-  const [[recipes, setRecipes], isLoading] = useFetchRecipes(page);
+  const [isLoading] = useFetchRecipes(page);
+  const recipes = useRecoilValue(selectFilteredRecipes(filter));
+  const setRecipes = useSetRecoilState(recipesState);
 
   async function updateRecipe(updatedRecipe) {
     const savedRecipe = await updateR(updatedRecipe);
